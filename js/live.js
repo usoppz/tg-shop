@@ -2,6 +2,9 @@ $(function() {
 	// 导入头部
 	$('#header').load('./header.html', function() {
 		$('.title').text('家纺床品');
+		$('#back').click(function() {
+			window.history.back();
+		})
 	});
 
 	// 点击nav
