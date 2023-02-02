@@ -1,10 +1,7 @@
 $(function() {
 	// 导入头部
 	$('#header').load('./header.html', function() {
-		$('.title').text('家纺床品');
-		$('#back').click(function() {
-			window.history.back();
-		})
+		// $('.title').text('家纺床品');
 	});
 
 	// 点击nav
@@ -23,7 +20,7 @@ $(function() {
 	$('.item_box').load('./item.html');
 
 	// 返回顶部
-	$('.return').on('click', move); //绑定点击事件，也可写成：$("#backtop").click(function(){  //代码   })
+/*	$('.return').on('click', move); //绑定点击事件，也可写成：$("#backtop").click(function(){  //代码   })
 	$(window).on('scroll', function() {
 		checkposition($('nav').height());
 	});
@@ -40,5 +37,5 @@ $(function() {
 		} else {
 			$('.return').fadeOut();
 		}
-	}
+	}*/
 })

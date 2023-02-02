@@ -77,3 +77,19 @@ html,body {
 	padding: 0vw 3.33vw 6vw;
 }
 
+.return {
+	width: 7.2vw;
+	height: 7.2vw;
+	border-radius: 7.2vw;
+	background-color: #000000;
+	position: fixed;
+	right: 5%;
+	bottom: 5%;
+	overflow: hidden;
+	display: none;
+}
+
+.return img {
+	width: 7.2vw;
+	height: 7.2vw;
+}
