@@ -64,7 +64,7 @@
 
     const checkString = Object.keys(data)
         .filter((key) => key !== 'hash')
-        .map((key) => '${key}=${data[key]}')
+        .map((key) => `${key}=${data[key]}`)
         .sort().join('\n');
 
 
