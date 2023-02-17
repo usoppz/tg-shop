@@ -17,24 +17,35 @@
                 margin-top: 10px;
             }
 
+            pre {
+                background: rgba(0, 0, 0, .07);
+                border-radius: 4px;
+                padding: 4px;
+                margin: 7px 0;
+                word-break: break-all;
+                word-break: break-word;
+                white-space: pre-wrap;
+                text-align: left;
+            }
+
         </style>
 	</head>
 	<body>
         <div class="user">
             <h3>initData : </h3>
-            <span id="initData"></span>
+            <pre id="initData"></pre>
         </div>
         <div class="user">
             <h3>initDataUnsafe : </h3>
-            <span id="initDataUnsafe"></span>
+            <pre id="initDataUnsafe"></pre>
         </div>
 		<div class="user">
             <h3>Current user data:</h3>
-			<span id="user"></span>
+			<pre id="user"></pre>
 		</div>
         <div class="chat">
             <h3>Current chat data:</h3>
-            <span id="chat"></span>
+            <pre id="chat"></pre>
         </div>
 	</body>
 <script type="application/javascript">
@@ -49,7 +60,12 @@
     document.querySelector('#initData').innerHTML = JSON.stringify(initData, null, 2);
     document.querySelector('#initDataUnsafe').innerHTML = JSON.stringify(initDataUnsafe, null, 2);
     document.querySelector('#user').innerHTML = JSON.stringify(user, null, 2);
-    document.querySelector('#chat').innerHTML = JSON.stringify(chat, null, 2);
+    if(chat){
+        document.querySelector('#chat').innerHTML = JSON.stringify(chat, null, 2);
+    }else{
+        document.querySelector('#chat').innerHTML = JSON.stringify("无聊天记录")
+    }
+
 
 </script>
 </html>
