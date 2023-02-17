@@ -67,11 +67,13 @@
         .map((key) => '${key}=${data[key]}')
         .sort().join('\n');
 
-    const secret = await CryptoJS.HmacSHA256('','WebAppData')
+
+
+/*    const secret = await CryptoJS.HmacSHA256('','WebAppData')
     const signature = await CryptoJS.HmacSHA256(checkString,secret)
     const hex = await signature.toString(CryptoJS.enc.Hex)
 
-    const verifyResult = {hex : hex, hash : data.hash}
+    const verifyResult = {hex : hex, hash : data.hash}*/
 
 
 
@@ -83,7 +85,7 @@
     }else{
         document.querySelector('#chat').innerHTML = JSON.stringify("无聊天记录")
     }
-    document.querySelector('#verify').innerHTML = JSON.stringify(verifyResult, null, 2);
+    document.querySelector('#verify').innerHTML = JSON.stringify(checkString, null, 2);
 
 </script>
 </html>
