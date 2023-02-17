@@ -62,18 +62,20 @@
     const user = data.user
     const chat = data.chat
 
-/*    const checkString = Object.keys(data)
+    const checkString = Object.keys(data)
         .filter((key) => key !== 'hash')
         .map((key) => `${key}=${data[key]}`)
-        .sort().join('\n');*/
+        .sort().join('\n');
 
 
 
-/*    const secret = await CryptoJS.HmacSHA256('','WebAppData')
-    const signature = await CryptoJS.HmacSHA256(checkString,secret)
-    const hex = await signature.toString(CryptoJS.enc.Hex)
+    const secret = CryptoJS.HmacSHA256('6057785400:AAHtUo5wKa7TOOWODkoj3innKdKufMaAOPs','WebAppData')
+    const signature = CryptoJS.HmacSHA256(checkString,secret)
+    const hex = signature.toString(CryptoJS.enc.Hex)
 
-    const verifyResult = {hex : hex, hash : data.hash}*/
+    const verifyResult = {hex : hex, hash : data.hash}
+
+    console.log(JSON.stringify(checkString))
 
 
 
@@ -85,7 +87,7 @@
     }else{
         document.querySelector('#chat').innerHTML = JSON.stringify("无聊天记录")
     }
-    // document.querySelector('#verify').innerHTML = JSON.stringify(checkString, null, 2);
+    document.querySelector('#verify').innerHTML = JSON.stringify(verifyResult, null, 2);
 
 </script>
 </html>
