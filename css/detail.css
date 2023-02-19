@@ -239,17 +239,11 @@ html,body {
 	
 }
 
-.goods .goods01 {
-	width: 100vw;
-	height: 110.13vw  ;
-	background: url(../img/con2.png);
-	background-size: cover;
+.goods .product-content {
+	padding: 0 20px;
 }
-
-.goods .goods02 {
-	width: 100vw;
-	height: 83.33vw;
-	background: url(../img/con3.png);
+.goods .product-content img {
+	width: 100%;
 	background-size: cover;
 }
 
@@ -271,7 +265,6 @@ html,body {
 .high {
 	height: 30vw;
 }
-
 
 .down {
 	background-color: white;

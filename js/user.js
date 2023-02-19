@@ -7,4 +7,5 @@ $(function(){
 		$('.title').css('color','#fff');
 		$('.header-more').css('color','#fff');
 	});
+
 });

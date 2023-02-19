@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>主页</title>
+<!--		<script src="https://telegram.org/js/telegram-web-app.js?1"></script>-->
+        <script src="js/crypto-js.min.js" type="text/javascript" charset="utf-8"></script>
+
+		<style>
+            .user {
+                margin : 10px;
+                text-align: center;
+            }
+
+            .chat {
+                text-align: center;
+                margin-top: 10px;
+            }
+
+            pre {
+                background: rgba(0, 0, 0, .07);
+                border-radius: 4px;
+                padding: 4px;
+                margin: 7px 0;
+                word-break: break-all;
+                word-break: break-word;
+                white-space: pre-wrap;
+                text-align: left;
+            }
+
+        </style>
+	</head>
+	<body>
+        <div class="user">
+            <h3>initData : </h3>
+            <pre id="initData"></pre>
+        </div>
+        <div class="user">
+            <h3>initDataUnsafe : </h3>
+            <pre id="initDataUnsafe"></pre>
+        </div>
+		<div class="user">
+            <h3>Current user data:</h3>
+			<pre id="user"></pre>
+		</div>
+        <div class="chat">
+            <h3>Current chat data:</h3>
+            <pre id="chat"></pre>
+        </div>
+        <div class="chat">
+            <h3>verify data:</h3>
+            <pre id="verify"></pre>
+        </div>
+	</body>
+<script type="application/javascript">
+
+    // Telegram.WebApp.ready();
+    const initData ="query_id=AAEMfjYrAgAAAAx-NivZzEND&user=%7B%22id%22%3A5019958796%2C%22first_name%22%3A%22Z%22%2C%22last_name%22%3A%22RORONOA%22%2C%22username%22%3A%22dpayz%22%2C%22language_code%22%3A%22en%22%7D&auth_date=1676612967&hash=0bf375943dd0cd530131176aab9d85dd2e5ab56488acebd4011b0b45f1bf98cc" //Telegram.WebApp.initData || '';
+    // const data = Telegram.WebApp.initDataUnsafe || {};
+
+    const q = new URLSearchParams(initData);
+    // Extract the hash
+    const hash = q.get("hash");
+
+    // Re encode in accordance to the documentation. Remember
+    // to remove hash before.
+    q.delete("hash");
+    const v = Array.from(q.entries());
+    v.sort(([aN, aV], [bN, bV]) => aN.localeCompare(bN));
+    const data_check_string = v.map(([n, v]) => `${n}=${v}`).join("\n");
+    //
+    // const user = data.user
+    // const chat = data.chat
+
+    /*const checkString =  Object.keys(data)
+        .filter((key) => key !== 'hash')
+        .map((key) => `${key}=${data[key]}`)
+        .sort().join('\n');
+    console.log(checkString)*/
+
+    const data_string = '123456abc';
+
+    // console.log(data_check_string)
+
+    const secret = CryptoJS.HmacSHA256('6057785400:AAHtUo5wKa7TOOWODkoj3innKdKufMaAOPs','WebAppData')
+    console.log(secret)
+
+    const signature = CryptoJS.HmacSHA256(data_string,secret)
+    console.log(signature)
+
+    const hex = secret.toString(CryptoJS.enc.Hex)
+    const verifyResult = {hex : hex, hash : hash}
+
+
+    /*document.querySelector('#initData').innerHTML = JSON.stringify(initData, null, 2);
+    document.querySelector('#initDataUnsafe').innerHTML = JSON.stringify(data, null, 2);
+    document.querySelector('#user').innerHTML = JSON.stringify(user, null, 2);
+    if(chat){
+        document.querySelector('#chat').innerHTML = JSON.stringify(chat, null, 2);
+    }else{
+        document.querySelector('#chat').innerHTML = JSON.stringify("无聊天记录")
+    }*/
+    document.querySelector('#verify').innerHTML = JSON.stringify(verifyResult, null, 2);
+
+</script>
+</html>

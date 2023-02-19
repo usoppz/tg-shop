@@ -14,7 +14,7 @@ header .title_box {
 header .title_box span {
 	display: block;
 	width: 9.3vw;
-	height: 5.67vw;
+	height: 4.67vw;
 	font-size: 4.5vw;
 	text-align: center;
 	line-height: 5.67vw;
@@ -37,4 +37,26 @@ header .header-more {
 	line-height: 5.67vw;
 	font-size: 5.2vw;
 	font-weight: bolder;
+}
+
+header .shop_car {
+	width: 3.8vw;
+	height: 3.83vw;
+	margin-right: 0.8vw;
+}
+
+/*购物车角标数字*/
+.cartip {
+	background-color: #fd622c;
+	position: absolute;
+	color: #fff;
+	font-size: 9px;
+	width: 15px;
+	height: 15px;
+	text-align: center;
+	line-height: 15px;
+	top: 18px;
+	right: 38px;
+	margin-top: -13px;
+	border-radius: 9999px;
 }

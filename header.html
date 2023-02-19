@@ -3,7 +3,8 @@
 	<!-- 左边盒子 -->
 	<div class="title_box">
 		<div class="title">
-			<a href="home.html" target="main">首页</a> ｜ <a href="live.html" target="main">家居生活</a> ｜ <a href="live.html" target="main">春夏换新</a> ｜ <a href="live.html" target="main">收纳日用</a>
+			<a href="home.html" target="main">首页</a> ｜ <a href="live.html" target="main">家居生活</a>
 		</div>
 	</div>
+	<div> <a href="shopCar.html" v-if="isLogin" target="main"><img class="shop_car" src="img/cart.png"></a> &nbsp; <a href="user.html" v-if="isLogin" target="main"><img class="shop_car" src="img/user.png"></a></div>
 </header>

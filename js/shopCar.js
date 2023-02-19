@@ -1,8 +1,10 @@
 $(function() {
 	// 导入头部
+/*
 	$('#header').load('./header.html', function() {
 		$('.title').text('购物车');
 	});
+*/
 
 	// 购物车加
 	$('.augment').on('touchstart', function() {
@@ -28,7 +30,7 @@ $(function() {
 	});
 
 	// 添加item信息
-	$('.item_box').load('./item.html');
+	// $('.item_box').load('./item.html');
 
 	// 全选checkbox
 	$(".all").click(function() {
