@@ -1,8 +1,8 @@
 $(function(){
 
-    Telegram.WebApp.ready();
-    const initData = Telegram.WebApp.initData || '';
-    // const initData = 'query_id=AAEMfjYrAgAAAAx-NivZzEND&user=%7B%22id%22%3A5019958796%2C%22first_name%22%3A%22Z%22%2C%22last_name%22%3A%22RORONOA%22%2C%22username%22%3A%22dpayz%22%2C%22language_code%22%3A%22en%22%7D&auth_date=1676612967&hash=0bf375943dd0cd530131176aab9d85dd2e5ab56488acebd4011b0b45f1bf98cc'
+    // Telegram.WebApp.ready();
+    // const initData = Telegram.WebApp.initData || '';
+    const initData = 'query_id=AAEMfjYrAgAAAAx-NivZzEND&user=%7B%22id%22%3A5019958796%2C%22first_name%22%3A%22Z%22%2C%22last_name%22%3A%22RORONOA%22%2C%22username%22%3A%22dpayz%22%2C%22language_code%22%3A%22en%22%7D&auth_date=1676612967&hash=0bf375943dd0cd530131176aab9d85dd2e5ab56488acebd4011b0b45f1bf98cc'
     // const initDataUnsafe = Telegram.WebApp.initDataUnsafe || {};
 
     /*axios.defaults.baseURL = 'http://127.0.0.1:28019/api/v1'

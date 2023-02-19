@@ -74,40 +74,11 @@
 			<!--<div class="product-content" v-html="detail.goodsDetailContent || ''"></div>-->
 			<!--<div class="goods02"></div>-->
 		</div>
-
-		<div class="more">
-			<div class="goods_title_box">
-				<div class="goods_title">更多推荐</div>
-			</div>
-			<div class="item_box">
-				<div class="item"  v-for="item in goods" :key="item.goodsId" >
-					<a :href="'detail.html?id='+item.goodsId" target="main">
-						<div class="img_box">
-							<img :src="prefix(item.goodsCoverImg)" alt="">
-						</div>
-						<div class="item_content">
-							<div class="name">{{ item.goodsName }}</div>
-							<div class="content_score">
-								<div class="original"><img class="score_img" src="img/money.png" alt="">原价： <span style="text-decoration: line-through;">¥{{item.originalPrice}}</span></div>
-								<div class="price">
-									<div>到手价</div> ￥<span>{{ item.sellingPrice }}</span>
-								</div>
-							</div>
-							<div class="content_earn">
-								<div class="earn"><img class="earn_img" src="img/icon2.png" alt="">省￥<span v-text="discount(item.originalPrice,item.sellingPrice)"></span></div>
-								<div class="percentage">折扣比例： <span v-text="discountRatio(item.originalPrice,item.sellingPrice)"></span></div>
-							</div>
-						</div>
-					</a>
-				</div>
-			</div>
-		</div>
-		
 		<!-- 垫高底部 -->
 		<div class="high"></div>
 
 		<!-- 底部 -->
-		<!--<footer class="down">
+		<footer class="down">
 			<ul class="down_list">
 				<li class="width01"><a href=""><img src="img/chat.png"></a></li>
 				<li class="width01"><a href="shopCar.html" target="main"><img src="img/shopcart.png"></a></li>
@@ -115,7 +86,7 @@
 				<li @click="doAddCart()" class="width02 add">加入购物车</li>
 				<li class="width02 sale">立即购买</li>
 			</ul>
-		</footer>-->
+		</footer>
 	</div>
 	<script src="https://cdn.jsdelivr.net/npm/vue@3.0.11/dist/vue.global.prod.js"></script>
 	<script src="js/utils/vant.min.js" type="text/javascript" charset="utf-8"></script>
@@ -129,25 +100,18 @@
 				const state = reactive({
 					detail: {
 						goodsCarouselList: []
-					},
-					goods: []
+					}
 				})
 				onMounted(async() => {
 					let id = getUrlParam('id')
 					const { data } = await getDetail(id)
 					state.detail = data.data
-					await getRecommendInfos()
 				})
 
 				const getDetail = (id) => {
 					return axios.get(`/goods/detail/${id}`);
 				}
 
-				const getRecommendInfos = () => {
-					axios.get(`/goods/recommend`).then(response => {
-						state.goods = response.data.data;
-					})
-				}
 				const addCart = (params) =>{
 					return axios.post('/shop-cart', params);
 				}

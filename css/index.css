@@ -65,6 +65,7 @@ html,body {
 .evaluation_header .title {
 	color: #101010;
 	margin-bottom: 1.87vw;
+	text-align: center;
 }
 
 .evaluation_header .iconfont {

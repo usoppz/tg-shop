@@ -57,12 +57,36 @@
 					<h1>收纳日用</h1>
 				</a>
 			</li>
+			<li>
+				<a href="live.html" target="main">
+					<img src="img/index/con1.png">
+					<h1>春夏换新</h1>
+				</a>
+			</li>
+			<li>
+				<a href="live.html" target="main">
+					<img src="img/index/con2.png">
+					<h1>家纺床品</h1>
+				</a>
+			</li>
+			<li>
+				<a href="live.html" target="main">
+					<img src="img/index/con3.png">
+					<h1>家居家装</h1>
+				</a>
+			</li>
+			<li>
+				<a href="live.html" target="main">
+					<img src="img/index/con4.png">
+					<h1>收纳日用</h1>
+				</a>
+			</li>
 		</ul>
 	</div>
 	<!-- 推荐更多 -->
 	<div class="recommend">
-		<div class="evaluation_header">
-			<div class="title">热门推荐</div>
+		<div style="padding: 4.67vw 3.33vw 2.27vw;font-size: 4.23vw;font-weight: bold;">
+			<div style="text-align: center;color: #101010;margin-bottom: 1.87vw;">热门商品</div>
 		</div>
 		<div class="item_box">
 			<div class="item"  v-for="item in hotGoodses" :key="item.goodsId" >
@@ -86,6 +110,55 @@
 				</a>
 			</div>
 		</div>
+		<div style="padding-bottom:2.27vw;padding-right: 3.33vw; font-size: 4.23vw;font-weight: bold;">
+			<div style="text-align: center;color: #101010;margin-bottom: 1.87vw;">新品上线</div>
+		</div>
+		<div class="item_box">
+			<div class="item"  v-for="item in newGoodses" :key="item.goodsId" >
+				<a :href="'detail.html?id='+item.goodsId" target="main">
+					<div class="img_box">
+						<img :src="prefix(item.goodsCoverImg)" alt="">
+					</div>
+					<div class="item_content">
+						<div class="name">{{ item.goodsName }}</div>
+						<div class="content_score">
+							<div class="original"><img class="score_img" src="img/money.png" alt="">原价： <span style="text-decoration: line-through;">¥{{item.originalPrice}}</span></div>
+							<div class="price">
+								<div>到手价</div> ￥<span>{{ item.sellingPrice }}</span>
+							</div>
+						</div>
+						<div class="content_earn">
+							<div class="earn"><img class="earn_img" src="img/icon2.png" alt="">省￥<span v-text="discount(item.originalPrice,item.sellingPrice)"></span></div>
+							<div class="percentage">折扣比例： <span v-text="discountRatio(item.originalPrice,item.sellingPrice)"></span></div>
+						</div>
+					</div>
+				</a>
+			</div>
+			<div style="padding-top:4.67vw;padding-bottom:2.27vw;padding-right: 3.33vw; font-size: 4.23vw;font-weight: bold;">
+				<div style="text-align: center;color: #101010;margin-bottom: 1.87vw;">店长推荐</div>
+			</div>
+			<div class="item_box">
+				<div class="item"  v-for="item in recommendGoodses" :key="item.goodsId" >
+					<a :href="'detail.html?id='+item.goodsId" target="main">
+						<div class="img_box">
+							<img :src="prefix(item.goodsCoverImg)" alt="">
+						</div>
+						<div class="item_content">
+							<div class="name">{{ item.goodsName }}</div>
+							<div class="content_score">
+								<div class="original"><img class="score_img" src="img/money.png" alt="">原价： <span style="text-decoration: line-through;">¥{{item.originalPrice}}</span></div>
+								<div class="price">
+									<div>到手价</div> ￥<span>{{ item.sellingPrice }}</span>
+								</div>
+							</div>
+							<div class="content_earn">
+								<div class="earn"><img class="earn_img" src="img/icon2.png" alt="">省￥<span v-text="discount(item.originalPrice,item.sellingPrice)"></span></div>
+								<div class="percentage">折扣比例： <span v-text="discountRatio(item.originalPrice,item.sellingPrice)"></span></div>
+							</div>
+						</div>
+					</a>
+				</div>
+		</div>
 	</div>
    </div>
 <script src="https://cdn.jsdelivr.net/npm/vue@3.0.11/dist/vue.global.prod.js"></script>
@@ -97,7 +170,9 @@
 		setup() {
 			const state = reactive({
 				swiperList: [], // 轮播图列表
-				hotGoodses: []
+				hotGoodses: [],
+				newGoodses: [],
+				recommendGoodses: []
 			})
 			onMounted(async() => {
 				/*showLoadingToast({
@@ -111,6 +186,8 @@
                 axios.get('/index-infos').then(response => {
 					state.swiperList = response.data.data.carousels;
 					state.hotGoodses = response.data.data.hotGoodses;
+					state.newGoodses = response.data.data.newGoodses;
+					state.recommendGoodses = response.data.data.recommendGoodses;
                 })
             }
 			const prefix = (url) => {
